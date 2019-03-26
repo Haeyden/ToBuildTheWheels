@@ -7,8 +7,12 @@ fileSource = open('C:\\Users\\24676\\Desktop\\checkadd.txt', 'r')
 # 生成的文件路径
 fileOutput = open('C:\\Users\\24676\\Desktop\\out.txt', 'w')
 
-# 读取模板文件 读出的是一个字符串
-config = fileConfig.read();
+#删除配置文件中的空行
+config=""
+for line in fileConfig.readlines():
+    if line == '\n':
+        line = line.strip("\n")
+    config+=line
 # 不加换行 输出文件的数据会连接在一起不会分段
 config+="\n"
 
@@ -30,7 +34,7 @@ while line:
     line = fileSource.readline()
 
 # 关闭文件流
-fileOutput.close()
+fileConfig.close()
 fileSource.close()
 fileOutput.close()
 
